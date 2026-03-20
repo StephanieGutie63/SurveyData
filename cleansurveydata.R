@@ -12,7 +12,10 @@ SurveyData <- clean_names(SurveyData) |>  #clean SurveyData names
 
 head(SurveyData) #check to see changes made to SurveyData
 
-CleanSurveyData <- SurveyData[-c(1,2), -c(2,3,4,8,9,10,11,12,13,14,15,16,17,18)]#delete rows1&2#delete columns 2,3,9,10,11,12,13,14,15,16,17
+CleanSurveyData <- SurveyData |> #delete unwated rows and columns
+                        slice(-c(1:2)) |>
+                        select(-EndDate,-IpAddress,-Status,-RecordedDate,-ResponseId,-RecipientLastName,-RecipientFirstName,-RecipientEmail,-ExternalReference,-LocationLatitude, -LocationLongitude, -DistributionChannel, -UserLanguage, -QRecaptchaScore)
+    
 head(CleanSurveyData) #check to see if columns are deleted
 
 #change startdate to Date
