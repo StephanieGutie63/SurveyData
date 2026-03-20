@@ -55,8 +55,15 @@ CleanSurveyData <- CleanSurveyData |>
 
 View(CleanSurveyData)
 
+library(stringr)
 
 
+CleanSurveyData <- CleanSurveyData |>
+  mutate(across(
+    c(PracticeYogaInterest,YogaExperience,YogaFrequency,YogaLifestyle,YogaContentInterest,YogaInfoSeeking,BeginnerFlowInterest,StressReliefFlowInterest,BreathworkInterest,FullLengthClassInterest,MonthlyProgramInterest,SubscriptionInterest,WillingnessToPay,VisitLikelihood,SearchInterest,ShortsInterest),
+    as.integer
+  ))
+str(CleanSurveyData)
 
 
 
