@@ -53,5 +53,10 @@ CleanSurveyData <- CleanSurveyData |>
     SearchInterest = Question17
   )
 
+View(CleanSurveyData)
+
+
+
+
 
 
