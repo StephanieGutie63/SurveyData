@@ -12,7 +12,10 @@ SurveyData <- clean_names(SurveyData) |>  #clean SurveyData names
 
 head(SurveyData) #check to see changes made to SurveyData
 
-CleanSurveyData <- SurveyData[-c(1,2), -c(2,3,4,8,9,10,11,12,13,14,15,16,17,18)]#delete rows1&2#delete columns 2,3,9,10,11,12,13,14,15,16,17
+CleanSurveyData <- SurveyData |> #delete unwated rows and columns
+                        slice(-c(1:2)) |>
+                        select(-EndDate,-IpAddress,-Status,-RecordedDate,-ResponseId,-RecipientLastName,-RecipientFirstName,-RecipientEmail,-ExternalReference,-LocationLatitude, -LocationLongitude, -DistributionChannel, -UserLanguage, -QRecaptchaScore)
+    
 head(CleanSurveyData) #check to see if columns are deleted
 
 #change startdate to Date
@@ -55,19 +58,7 @@ CleanSurveyData <- CleanSurveyData |>
 
 View(CleanSurveyData)
 
-# Create dummy variables for Languages
-CleanSurveyData <- CleanSurveyData %>%
-  mutate(
-    lang_english =   ifelse(str_detect(Languages, "1"), 1, 0),
-    lang_mandarin =  ifelse(str_detect(Languages, "2"), 1, 0),
-    lang_cantonese = ifelse(str_detect(Languages, "3"), 1, 0),
-    lang_spanish =   ifelse(str_detect(Languages, "4"), 1, 0),
-    lang_other =     ifelse(str_detect(Languages, "5"), 1, 0)
-  )
 
-head(CleanSurveyData[, c("Languages", "lang_english", "lang_mandarin", "lang_cantonese", "lang_spanish", "lang_other")])
-
-CleanSurveyData[1, "Languages"]
 
 
 
