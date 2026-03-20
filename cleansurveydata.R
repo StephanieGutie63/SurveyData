@@ -67,5 +67,17 @@ CleanSurveyData <- CleanSurveyData |>
   ))
 str(CleanSurveyData)
 
+# Create dummy variables for Languages
+CleanSurveyData <- CleanSurveyData %>%
+  mutate(
+    lang_english =   ifelse(str_detect(Languages, "1"), 1, 0),
+    lang_mandarin =  ifelse(str_detect(Languages, "2"), 1, 0),
+    lang_cantonese = ifelse(str_detect(Languages, "3"), 1, 0),
+    lang_spanish =   ifelse(str_detect(Languages, "4"), 1, 0),
+    lang_other =     ifelse(str_detect(Languages, "5"), 1, 0)
+  )
 
+head(CleanSurveyData[, c("Languages", "lang_english", "lang_mandarin", "lang_cantonese", "lang_spanish", "lang_other")])
+
+CleanSurveyData[1, "Languages"]
 
