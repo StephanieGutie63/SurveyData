@@ -81,3 +81,4 @@ head(CleanSurveyData[, c("Languages", "lang_english", "lang_mandarin", "lang_can
 
 CleanSurveyData[1, "Languages"]
 
+write.csv(CleanSurveyData,"CleanSurveyDataNew.csv")
