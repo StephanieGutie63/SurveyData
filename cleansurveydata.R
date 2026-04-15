@@ -83,8 +83,49 @@ CleanSurveyData[1, "Languages"]
 
 write.csv(CleanSurveyData,"CleanSurveyDataNew.csv")
 
-install.packages("readxl")
+#install.packages("readxl")
 library(readxl)
 
 data <- read_excel("lifetime download with translations.xlsx")
 View(data)
+
+
+#install.packages("haven")
+library(haven)
+survey <- read_sav("Sino Yoga Project Practrice or Interested Yoga.sav")
+View(survey)
+
+#change variable names
+CleanSurvey<- survey |>
+  rename(
+    PracticeYogaInterest = Question_1,
+    YogaExperience = Question_2,
+    YogaActivities = Question_3_1,
+    YogaActivitiesText = Question_3_8_TEXT,
+    YogaFrequency = Question_4,
+    YogaLifestyle = Question_5_1,
+    YogaContentInterest = Question_5_2,
+    YogaInfoSeeking = Question_5_3,
+    PreferredVideoFormats = Question_6_1,
+    BeginnerFlowInterest = Question_7_1,
+    StressReliefFlowInterest = Question_7_2,
+    BreathworkInterest = Question_7_3,
+    FullLengthClassInterest = Question_7_4,
+    MonthlyProgramInterest = Question_7_5,
+    ShortsInterest = Question_7_6,
+    ChineseMedicineInterest = Question_7_7,
+    SubscriptionInterest = Question_8,
+    WillingnessToPay = Question_9,
+    WillingnessToPayText = Question_9_5_TEXT,
+    VisitLikelihood = Question_10,
+    SocialPlatforms = Question_11_1,
+    AgeGroup = Question_12,
+    Gender = Question_13,
+    IncomeBracket = Question_14,
+    Languages = Question_15_1,
+    LanguagesText = Question_15_5_TEXT,
+    Country = Question_16,
+    SearchInterest = Question_17
+  )
+
+View(CleanSurvey)
