@@ -82,3 +82,9 @@ head(CleanSurveyData[, c("Languages", "lang_english", "lang_mandarin", "lang_can
 CleanSurveyData[1, "Languages"]
 
 write.csv(CleanSurveyData,"CleanSurveyDataNew.csv")
+
+install.packages("readxl")
+library(readxl)
+
+data <- read_excel("lifetime download with translations.xlsx")
+View(data)
